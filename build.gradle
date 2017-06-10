@@ -1,0 +1,43 @@
+group 'gregor'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven {
+        url 'http://repo1.maven.org/maven2/'
+    }
+}
+
+dependencies {
+    // Needed
+    compile group: 'com.google.guava',  name: 'guava',        version: '21.0'
+    compile group: 'org.projectlombok', name: 'lombok',       version: '1.16.16'
+    compile group: 'org.slf4j',         name: 'slf4j-simple', version: '1.7.25'
+
+    // Possibly needed
+    compile group: 'com.sparkjava',              name: 'spark-core',       version: '2.5.5'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0.pr3'
+
+    // Needed
+    testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.1'
+    testCompile group: 'org.spockframework',  name: 'spock-core', version: '1.1-groovy-2.4-rc-3'
+    testCompile group: 'junit',               name: 'junit',      version: '4.12'
+}
+
+// For starting imbedded Jetty server from the command line
+jar {
+    outputs.upToDateWhen { false }
+    manifest {
+        attributes 'Main-Class': 'com.gregor.assessment'
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    archiveName "GregorAssessment.jar"
+}

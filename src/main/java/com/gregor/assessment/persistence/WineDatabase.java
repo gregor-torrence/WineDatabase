@@ -51,7 +51,7 @@ public class WineDatabase {
         database = database.stream().filter(wine -> !wine.getUuid().equals(uuid)).collect(Collectors.toList());
     }
 
-    public List<Wine> readAll() {
+    public synchronized List<Wine> readAll() {
         return ImmutableList.copyOf(database);
     }
 

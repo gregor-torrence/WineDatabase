@@ -12,7 +12,7 @@ CRUD endpoints:
 ```
 Create: POST   http://localhost:8080/wine
 Read:   GET    http://localhost:8080/wine/:uuid
-Update: POST   http://localhost:8080/wine
+Update: PUT    http://localhost:8080/wine
 Delete: DELETE http://localhost:8080/wine/:uuid
 ```
 

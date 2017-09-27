@@ -10,10 +10,10 @@ Run:
 
 CRUD endpoints:
 ```
-Create: POST   http://localhost:8080/wine
-Read:   GET    http://localhost:8080/wine/:uuid
-Update: PUT    http://localhost:8080/wine
-Delete: DELETE http://localhost:8080/wine/:uuid
+Create: POST   http://localhost:8080/wine          Returns created wine's UUID as a String.
+Read:   GET    http://localhost:8080/wine/:uuid    Returns specified wine's JSON.
+Update: PUT    http://localhost:8080/wine          Returns specified wine's JSON.
+Delete: DELETE http://localhost:8080/wine/:uuid    Returns nothing.
 ```
 
 Example JSON for posting:

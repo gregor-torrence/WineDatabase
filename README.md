@@ -1,6 +1,7 @@
 **Example SparkJava microservice**
 
-A toy Wine Database with in-memory storage.
+A toy Wine Database with in-memory storage. Establishes patterns for separating implementation concerns:
+HTTP request handling, persistence, and error handling. 
 
 Build with java 8:
 
@@ -8,7 +9,7 @@ Build with java 8:
 
 Run:
 
-```java -jar ./build/libs/GregorAssessment.jar```
+```java -jar ./build/libs/WineREST.jar```
 
 CRUD endpoints:
 ```

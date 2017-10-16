@@ -1,4 +1,4 @@
-package com.gregor.assessment.models;
+package com.gregortorrence.winedatabase.models;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -7,6 +7,8 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
+ * Document to describe one wine produced by one winery in one vintage.
+ *
  * Created by Gregor Torrence on 6/9/17.
  */
 @Getter

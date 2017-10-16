@@ -1,7 +1,7 @@
-package com.gregor.assessment.persistence;
+package com.gregortorrence.winedatabase.persistence;
 
 import com.google.common.collect.ImmutableList;
-import com.gregor.assessment.models.Wine;
+import com.gregortorrence.winedatabase.models.Wine;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,6 +11,8 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
+ * This application is a Sparkjava demo, not a persistence demo. So we'll use an silly in-memory persistence model.
+ *
  * Created by Gregor Torrence on 6/9/17.
  */
 public class WineDatabase {

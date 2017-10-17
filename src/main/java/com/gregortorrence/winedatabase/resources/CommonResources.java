@@ -1,6 +1,7 @@
 package com.gregortorrence.winedatabase.resources;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import spark.Request;
 import spark.Response;
 import spark.route.RouteOverview;
@@ -15,6 +16,7 @@ import static spark.Spark.exception;
  *
  * Created by Gregor Torrence on 10/16/17.
  */
+@Slf4j
 public class CommonResources {
 
     // Package visible for statically importing into other services.
@@ -26,9 +28,12 @@ public class CommonResources {
 
         // Handle Exceptions
         exception(FileNotFoundException.class, this::handleNotFoundException);
+
+        log.info("Created common endpoints.");
     }
 
     private String handleNotFoundException(Exception exception, Request request, Response response) {
+        log.info("Service return 404. {}", exception.getMessage());
         response.status(HttpServletResponse.SC_NOT_FOUND);
         return exception.getMessage();
     }

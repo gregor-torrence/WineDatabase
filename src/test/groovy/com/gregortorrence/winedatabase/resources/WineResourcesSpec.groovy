@@ -91,7 +91,6 @@ class WineResourcesSpec extends Specification {
 
         then:
         1 * wineDatabase.readAll()
-
     }
 
 }

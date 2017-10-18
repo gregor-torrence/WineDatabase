@@ -1,7 +1,12 @@
 **Example SparkJava microservice**
 
-A toy Wine Database with in-memory storage. Establishes patterns for separating implementation concerns:
+Here is a small, realistic starting point for building a CRUD microservice using [SparkJava](http://www.sparkjava.com/).
+It's a Wine Database with in-memory storage. Why wine? Because we're all tired of example code that stores users.
+ 
+It establishes patterns for separating implementation concerns:
 HTTP request handling, persistence, and error handling. 
+
+100% unit test coverage is provided using [Spock](http://spockframework.org/). 
 
 Build with java 8:
 
@@ -25,7 +30,7 @@ Delete: DELETE http://localhost:8080/wine/:uuid    Returns nothing.
 500 status code for any internal error
 ```
 
-Example JSON for posting:
+Example JSON for posting to `http://localhost:8080/wine`:
 
 ```
 {

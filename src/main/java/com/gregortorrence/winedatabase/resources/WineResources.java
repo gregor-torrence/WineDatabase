@@ -29,9 +29,9 @@ public class WineResources {
         this.wineDatabase = wineDatabase;
 
         // CRUD
-        post("/wine",this::createWine, objectMapper::writeValueAsString);
-        get("/wine/:uuid",this::readWine, objectMapper::writeValueAsString);
-        put("/wine",this::updateWine, objectMapper::writeValueAsString);
+        post("/wine", this::createWine, objectMapper::writeValueAsString);
+        get("/wine/:uuid", this::readWine, objectMapper::writeValueAsString);
+        put("/wine", this::updateWine, objectMapper::writeValueAsString);
         delete("/wine/:uuid",this::deleteWine);
 
         // READ ALL (for debugging purposes)

@@ -18,6 +18,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Wine {
     private String  uuid;
+
     private String  name;
     private String  winery;
     private String  varietal;

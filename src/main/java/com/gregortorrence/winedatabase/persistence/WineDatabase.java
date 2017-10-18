@@ -12,7 +12,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
- * This application is a Sparkjava demo, not a persistence demo. So we'll use an silly in-memory persistence model.
+ * This application is a Sparkjava demo, not a persistence demo. So I'll use an impractical in-memory persistence model.
  *
  * Created by Gregor Torrence on 6/9/17.
  */

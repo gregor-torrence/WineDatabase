@@ -13,8 +13,8 @@ class WineRESTSpec extends Specification {
 
     def 'nothing really happens from main'() {
         given:
-        Spark.stop() // might be running from a previous unit test
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS) // give it time to shut down
+        Spark.stop() // Probably running from a previous unit test, stop it.
+        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS) // Give it time to shut down
 
         when:
         new WineREST().main(new String[0])

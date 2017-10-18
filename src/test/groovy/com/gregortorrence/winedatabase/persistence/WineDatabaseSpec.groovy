@@ -23,10 +23,17 @@ class WineDatabaseSpec extends Specification {
 
         when:
         def createdUUID = wineDatabase.create(wine)
+        def all = wineDatabase.readAll()
 
         then:
         createdUUID != 'uuid'
-        wineDatabase.readAll().size() == 1
+        all.size() == 1
+        all.get(0).getUuid() == createdUUID
+        all.get(0).getName() == 'name'
+        all.get(0).getWinery() == 'winery'
+        all.get(0).getVarietal() == 'varietal'
+        all.get(0).getVintage() == 2015
+        all.get(0).getAppellation() == 'appellation'
 
         when:
         wineDatabase.create(new Wine())
@@ -45,7 +52,7 @@ class WineDatabaseSpec extends Specification {
         def createdUUID = wineDatabase.create(wine)
 
         when:
-        def readWine = wineDatabase.read(createdUUID)
+        def readWine = wineDatabase.read(createdUUID) // Get it? readWine.
 
         then:
         wine.getUuid() == readWine.getUuid()

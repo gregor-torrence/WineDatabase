@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by Gregor Torrence on 10/16/17.
  */
-class WineRESTSpec extends Specification {
+class WineMainSpec extends Specification {
 
     def 'nothing really happens from main'() {
         given:
@@ -17,7 +17,7 @@ class WineRESTSpec extends Specification {
         Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS) // Give it time to shut down
 
         when:
-        new WineREST().main(new String[0])
+        new WineMain().main(new String[0])
 
         then:
         noExceptionThrown()

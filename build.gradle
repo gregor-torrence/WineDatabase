@@ -30,12 +30,12 @@ dependencies {
 jar {
     outputs.upToDateWhen { false }
     manifest {
-        attributes 'Main-Class': 'com.gregortorrence.winedatabase.WineREST'
+        attributes 'Main-Class': 'com.gregortorrence.winedatabase.WineMain'
     }
 
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 
-    archiveName "WineREST.jar"
+    archiveName "WineDatabase.jar"
 }

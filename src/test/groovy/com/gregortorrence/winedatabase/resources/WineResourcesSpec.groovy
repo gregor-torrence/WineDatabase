@@ -1,7 +1,7 @@
 package com.gregortorrence.winedatabase.resources
 
 import com.gregortorrence.winedatabase.models.Wine
-import com.gregortorrence.winedatabase.persistence.WineDatabase
+import com.gregortorrence.winedatabase.persistence.WineService
 import spark.Request
 import spark.Response
 import spock.lang.Specification
@@ -15,7 +15,7 @@ class WineResourcesSpec extends Specification {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
         def json = CommonResources.objectMapper.writeValueAsString(wine)
-        def wineDatabase = Mock(WineDatabase)
+        def wineDatabase = Mock(WineService)
         def wineResources = new WineResources(wineDatabase)
         def request = Mock(Request)
         request.body() >> json
@@ -30,7 +30,7 @@ class WineResourcesSpec extends Specification {
     def 'should read wine from database from give uuid'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
-        def wineDatabase = Mock(WineDatabase)
+        def wineDatabase = Mock(WineService)
         def wineResources = new WineResources(wineDatabase)
         def request = Mock(Request)
         request.params('uuid') >> wine.getUuid()
@@ -46,7 +46,7 @@ class WineResourcesSpec extends Specification {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
         def json = CommonResources.objectMapper.writeValueAsString(wine)
-        def wineDatabase = Mock(WineDatabase)
+        def wineDatabase = Mock(WineService)
         def wineResources = new WineResources(wineDatabase)
         def request = Mock(Request)
         request.body() >> json
@@ -65,7 +65,7 @@ class WineResourcesSpec extends Specification {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
         def json = CommonResources.objectMapper.writeValueAsString(wine)
-        def wineDatabase = Mock(WineDatabase)
+        def wineDatabase = Mock(WineService)
         def wineResources = new WineResources(wineDatabase)
         def request = Mock(Request)
         request.body() >> json
@@ -83,7 +83,7 @@ class WineResourcesSpec extends Specification {
 
     def 'should read all'() {
         given:
-        def wineDatabase = Mock(WineDatabase)
+        def wineDatabase = Mock(WineService)
         def wineResources = new WineResources(wineDatabase)
 
         when:

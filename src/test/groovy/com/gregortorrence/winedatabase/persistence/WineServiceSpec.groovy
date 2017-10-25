@@ -6,11 +6,11 @@ import spock.lang.Specification
 /**
  * Created by Gregor Torrence on 10/16/17.
  */
-class WineDatabaseSpec extends Specification {
+class WineServiceSpec extends Specification {
 
     def 'should initialize empty'() {
         when:
-        def wineDatabase = new WineDatabase()
+        def wineDatabase = new WineService()
 
         then:
         wineDatabase.readAll().size() == 0
@@ -19,7 +19,7 @@ class WineDatabaseSpec extends Specification {
     def 'should create wines'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
-        def wineDatabase = new WineDatabase()
+        def wineDatabase = new WineService()
 
         when:
         def createdUUID = wineDatabase.create(wine)
@@ -48,7 +48,7 @@ class WineDatabaseSpec extends Specification {
     def 'should read wines by uuid'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
-        def wineDatabase = new WineDatabase()
+        def wineDatabase = new WineService()
         def createdUUID = wineDatabase.create(wine)
 
         when:
@@ -66,7 +66,7 @@ class WineDatabaseSpec extends Specification {
     def 'should update wines by uuid'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
-        def wineDatabase = new WineDatabase()
+        def wineDatabase = new WineService()
 
         when:
         def createdUUID  = wineDatabase.create(wine)
@@ -95,7 +95,7 @@ class WineDatabaseSpec extends Specification {
     def 'should delete wines by uuid'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
-        def wineDatabase = new WineDatabase()
+        def wineDatabase = new WineService()
 
         when:
         def createdUUID = wineDatabase.create(wine)
@@ -118,7 +118,7 @@ class WineDatabaseSpec extends Specification {
 
     def 'reading non-existent wines is an error'() {
         given:
-        def wineDatabase = new WineDatabase()
+        def wineDatabase = new WineService()
 
         when:
         wineDatabase.read('garbage-uuid')
@@ -129,7 +129,7 @@ class WineDatabaseSpec extends Specification {
 
     def 'should fail when database in invalid state of duplicate wines'() {
         given:
-        def wineDatabase = new WineDatabase()
+        def wineDatabase = new WineService()
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
         wineDatabase.database = [ wine, wine ]
 

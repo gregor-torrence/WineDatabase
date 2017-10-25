@@ -14,7 +14,7 @@ Build with java 8:
 
 Run:
 
-```java -jar ./build/libs/WineREST.jar```
+```java -jar ./build/libs/WineDatabase.jar```
 
 CRUD endpoints:
 ```

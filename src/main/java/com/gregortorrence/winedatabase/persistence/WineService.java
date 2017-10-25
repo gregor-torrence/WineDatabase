@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * Created by Gregor Torrence on 6/9/17.
  */
 @Slf4j
-public class WineDatabase {
+public class WineService {
 
     private static final int INITIAL_CAPACITY = 1024;
 

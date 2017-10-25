@@ -1,7 +1,7 @@
 package com.gregortorrence.winedatabase.resources;
 
 import com.gregortorrence.winedatabase.models.Wine;
-import com.gregortorrence.winedatabase.persistence.WineDatabase;
+import com.gregortorrence.winedatabase.persistence.WineService;
 import static com.gregortorrence.winedatabase.resources.CommonResources.*;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,9 +23,9 @@ import static spark.Spark.*;
 @Slf4j
 public class WineResources {
 
-    private final WineDatabase wineDatabase;
+    private final WineService wineDatabase;
 
-    public WineResources(WineDatabase wineDatabase) {
+    public WineResources(WineService wineDatabase) {
         this.wineDatabase = wineDatabase;
 
         // CRUD

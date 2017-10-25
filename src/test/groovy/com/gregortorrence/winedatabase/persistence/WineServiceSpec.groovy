@@ -19,11 +19,11 @@ class WineServiceSpec extends Specification {
     def 'should create wines'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
-        def wineDatabase = new WineService()
+        def wineService = new WineService()
 
         when:
-        def createdUUID = wineDatabase.create(wine)
-        def all = wineDatabase.readAll()
+        def createdUUID = wineService.create(wine)
+        def all = wineService.readAll()
 
         then:
         createdUUID != 'uuid'
@@ -36,23 +36,23 @@ class WineServiceSpec extends Specification {
         all.get(0).getAppellation() == 'appellation'
 
         when:
-        wineDatabase.create(new Wine())
-        wineDatabase.create(new Wine())
-        wineDatabase.create(new Wine())
-        wineDatabase.create(new Wine())
+        wineService.create(new Wine())
+        wineService.create(new Wine())
+        wineService.create(new Wine())
+        wineService.create(new Wine())
 
         then:
-        wineDatabase.readAll().size() == 5
+        wineService.readAll().size() == 5
     }
 
     def 'should read wines by uuid'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
-        def wineDatabase = new WineService()
-        def createdUUID = wineDatabase.create(wine)
+        def wineService = new WineService()
+        def createdUUID = wineService.create(wine)
 
         when:
-        def readWine = wineDatabase.read(createdUUID) // Get it? readWine.
+        def readWine = wineService.read(createdUUID) // Get it? readWine.
 
         then:
         wine.getUuid() == readWine.getUuid()
@@ -66,21 +66,21 @@ class WineServiceSpec extends Specification {
     def 'should update wines by uuid'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
-        def wineDatabase = new WineService()
+        def wineService = new WineService()
 
         when:
-        def createdUUID  = wineDatabase.create(wine)
-        def createdUUID2 = wineDatabase.create(new Wine())
+        def createdUUID  = wineService.create(wine)
+        def createdUUID2 = wineService.create(new Wine())
 
         then:
-        wineDatabase.readAll().size() == 2
+        wineService.readAll().size() == 2
 
         when:
-        def readWine = wineDatabase.read(createdUUID)
+        def readWine = wineService.read(createdUUID)
         readWine.setName('name2').setWinery('winery2').setVarietal('varietal2').setVintage(2017).setAppellation('appellation2')
 
         and:
-        def updated = wineDatabase.update(readWine)
+        def updated = wineService.update(readWine)
 
         then:
         updated.getUuid()        == createdUUID
@@ -95,33 +95,33 @@ class WineServiceSpec extends Specification {
     def 'should delete wines by uuid'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
-        def wineDatabase = new WineService()
+        def wineService = new WineService()
 
         when:
-        def createdUUID = wineDatabase.create(wine)
+        def createdUUID = wineService.create(wine)
 
         then:
-        wineDatabase.readAll().size() == 1
+        wineService.readAll().size() == 1
 
         when:
-        wineDatabase.delete(createdUUID)
+        wineService.delete(createdUUID)
 
         then:
-        wineDatabase.readAll().size() == 0
+        wineService.readAll().size() == 0
 
         when: 'double delete is not an error'
-        wineDatabase.delete(createdUUID)
+        wineService.delete(createdUUID)
 
         then:
-        wineDatabase.readAll().size() == 0
+        wineService.readAll().size() == 0
     }
 
     def 'reading non-existent wines is an error'() {
         given:
-        def wineDatabase = new WineService()
+        def wineService = new WineService()
 
         when:
-        wineDatabase.read('garbage-uuid')
+        wineService.read('garbage-uuid')
 
         then:
         thrown(FileNotFoundException)

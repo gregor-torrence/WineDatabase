@@ -19,11 +19,11 @@ public class WineMain {
         port(8080);
 
         // Initialize persistence
-        WineService wineDatabase = new WineService();
+        WineService wineService = new WineService();
 
         // Create HTTP resources
         new CommonResources();
-        new WineResources(wineDatabase);
+        new WineResources(wineService);
 
         log.info("WineService Jetty started.");
     }

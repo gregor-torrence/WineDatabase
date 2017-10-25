@@ -23,10 +23,10 @@ import static spark.Spark.*;
 @Slf4j
 public class WineResources {
 
-    private final WineService wineDatabase;
+    private final WineService wineService;
 
-    public WineResources(WineService wineDatabase) {
-        this.wineDatabase = wineDatabase;
+    public WineResources(WineService wineService) {
+        this.wineService = wineService;
 
         // CRUD
         post("/wine", this::createWine, objectMapper::writeValueAsString);
@@ -43,28 +43,28 @@ public class WineResources {
 
     private String createWine(Request request, Response response) throws IOException {
         log.info("Create wine  request {}", request.body());
-        return wineDatabase.create(objectMapper.readValue(request.body(), Wine.class));
+        return wineService.create(objectMapper.readValue(request.body(), Wine.class));
     }
 
     private Wine readWine(Request request, Response response) throws IOException {
         log.info("Read wine request {}", request.params("uuid"));
-        return wineDatabase.read(request.params("uuid"));
+        return wineService.read(request.params("uuid"));
     }
 
     private Wine updateWine(Request request, Response response) throws IOException {
         log.info("Update wine request {}", request.body());
-        return wineDatabase.update(objectMapper.readValue(request.body(), Wine.class));
+        return wineService.update(objectMapper.readValue(request.body(), Wine.class));
     }
 
     private String deleteWine(Request request, Response response) {
         log.info("Delete wine request {}", request.params("uuid"));
-        wineDatabase.delete(request.params("uuid"));
+        wineService.delete(request.params("uuid"));
         return "";
     }
 
     private List<Wine> readAll(Request request, Response response) {
         log.info("Read all wines request.");
-        return wineDatabase.readAll();
+        return wineService.readAll();
     }
 
 }

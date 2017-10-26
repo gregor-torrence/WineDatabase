@@ -4,7 +4,7 @@ Here is a small, realistic starting point for building a CRUD microservice using
 It's a Wine Database with in-memory storage. Why wine? Because we're all tired of example code that stores users.
  
 It establishes patterns for separating implementation concerns:
-HTTP request handling, persistence, and error handling. 
+HTTP request handling (resources), persistence (services), and error handling. 
 
 100% unit test coverage is provided using [Spock](http://spockframework.org/). 
 

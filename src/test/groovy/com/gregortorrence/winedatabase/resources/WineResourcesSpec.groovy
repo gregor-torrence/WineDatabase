@@ -15,8 +15,8 @@ class WineResourcesSpec extends Specification {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
         def json = CommonResources.objectMapper.writeValueAsString(wine)
-        def wineDatabase = Mock(WineService)
-        def wineResources = new WineResources(wineDatabase)
+        def wineService = Mock(WineService)
+        def wineResources = new WineResources(wineService)
         def request = Mock(Request)
         request.body() >> json
 
@@ -24,14 +24,14 @@ class WineResourcesSpec extends Specification {
         wineResources.createWine(request, Mock(Response))
 
         then:
-        1 * wineDatabase.create(wine)
+        1 * wineService.create(wine)
     }
 
     def 'should read wine from database from give uuid'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
-        def wineDatabase = Mock(WineService)
-        def wineResources = new WineResources(wineDatabase)
+        def wineService = Mock(WineService)
+        def wineResources = new WineResources(wineService)
         def request = Mock(Request)
         request.params('uuid') >> wine.getUuid()
 
@@ -39,15 +39,15 @@ class WineResourcesSpec extends Specification {
         wineResources.readWine(request, Mock(Response))
 
         then:
-        1 * wineDatabase.read(wine.getUuid())
+        1 * wineService.read(wine.getUuid())
     }
 
     def 'should update in database from expected wine'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
         def json = CommonResources.objectMapper.writeValueAsString(wine)
-        def wineDatabase = Mock(WineService)
-        def wineResources = new WineResources(wineDatabase)
+        def wineService = Mock(WineService)
+        def wineResources = new WineResources(wineService)
         def request = Mock(Request)
         request.body() >> json
         wineResources.createWine(request, Mock(Response))
@@ -58,15 +58,15 @@ class WineResourcesSpec extends Specification {
         wineResources.deleteWine(request, Mock(Response))
 
         then:
-        1 * wineDatabase.delete(wine.getUuid())
+        1 * wineService.delete(wine.getUuid())
     }
 
     def 'should delete in database from uuid'() {
         given:
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
         def json = CommonResources.objectMapper.writeValueAsString(wine)
-        def wineDatabase = Mock(WineService)
-        def wineResources = new WineResources(wineDatabase)
+        def wineService = Mock(WineService)
+        def wineResources = new WineResources(wineService)
         def request = Mock(Request)
         request.body() >> json
         wineResources.createWine(request, Mock(Response))
@@ -78,19 +78,19 @@ class WineResourcesSpec extends Specification {
         wineResources.updateWine(request, Mock(Response))
 
         then:
-        1 * wineDatabase.update(wine)
+        1 * wineService.update(wine)
     }
 
     def 'should read all'() {
         given:
-        def wineDatabase = Mock(WineService)
-        def wineResources = new WineResources(wineDatabase)
+        def wineService = Mock(WineService)
+        def wineResources = new WineResources(wineService)
 
         when:
         wineResources.readAll(Mock(Request), Mock(Response))
 
         then:
-        1 * wineDatabase.readAll()
+        1 * wineService.readAll()
     }
 
 }

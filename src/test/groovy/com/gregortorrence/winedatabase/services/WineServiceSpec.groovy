@@ -10,10 +10,10 @@ class WineServiceSpec extends Specification {
 
     def 'should initialize empty'() {
         when:
-        def wineDatabase = new WineService()
+        def wineService = new WineService()
 
         then:
-        wineDatabase.readAll().size() == 0
+        wineService.readAll().size() == 0
     }
 
     def 'should create wines'() {
@@ -127,14 +127,14 @@ class WineServiceSpec extends Specification {
         thrown(FileNotFoundException)
     }
 
-    def 'should fail when database in invalid state of duplicate wines'() {
+    def 'should fail when database is in invalid state of duplicate wines'() {
         given:
-        def wineDatabase = new WineService()
+        def wineService = new WineService()
         def wine = new Wine().setUuid('uuid').setName('name').setWinery('winery').setVarietal('varietal').setVintage(2015).setAppellation('appellation')
-        wineDatabase.database = [ wine, wine ]
+        wineService.database = [ wine, wine ]
 
         when:
-        wineDatabase.read(wine.getUuid())
+        wineService.read(wine.getUuid())
 
         then:
         thrown(IllegalStateException)

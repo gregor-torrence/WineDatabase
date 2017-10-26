@@ -12,8 +12,8 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
- * This services provides "persistence" for Wine documents. This application is a Sparkjava demo, not a persistence
- * demo. So I'll use an impractical in-memory services model.
+ * This service provides "persistence" for Wine documents. The whole application is a Sparkjava demo, not a persistence
+ * demo. So I'll use an impractical in-memory List instead of a proper database.
  *
  * Created by Gregor Torrence on 6/9/17.
  */

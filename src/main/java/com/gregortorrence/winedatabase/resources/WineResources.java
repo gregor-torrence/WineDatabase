@@ -16,7 +16,7 @@ import static spark.Spark.*;
  * CRUD endpoints for Wine documents.
  *
  * Note that endpoint implementations are invoked as method references instead of lambdas. This allow the
- * implementations to be unit-testable.
+ * implementations to be easily unit-tested.
  *
  * Created by Gregor Torrence on 10/16/17.
  */

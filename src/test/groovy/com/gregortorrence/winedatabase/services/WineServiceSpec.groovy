@@ -1,4 +1,4 @@
-package com.gregortorrence.winedatabase.persistence
+package com.gregortorrence.winedatabase.services
 
 import com.gregortorrence.winedatabase.models.Wine
 import spock.lang.Specification

@@ -1,6 +1,6 @@
 package com.gregortorrence.winedatabase;
 
-import com.gregortorrence.winedatabase.persistence.WineService;
+import com.gregortorrence.winedatabase.services.WineService;
 import com.gregortorrence.winedatabase.resources.CommonResources;
 import com.gregortorrence.winedatabase.resources.WineResources;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ public class WineMain {
     public static void main(String[] args) {
         port(8080);
 
-        // Initialize persistence
+        // Initialize services
         WineService wineService = new WineService();
 
         // Create HTTP resources

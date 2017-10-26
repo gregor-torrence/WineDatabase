@@ -1,7 +1,7 @@
 package com.gregortorrence.winedatabase.resources
 
 import com.gregortorrence.winedatabase.models.Wine
-import com.gregortorrence.winedatabase.persistence.WineService
+import com.gregortorrence.winedatabase.services.WineService
 import spark.Request
 import spark.Response
 import spock.lang.Specification

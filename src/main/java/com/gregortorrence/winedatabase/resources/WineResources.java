@@ -1,7 +1,7 @@
 package com.gregortorrence.winedatabase.resources;
 
 import com.gregortorrence.winedatabase.models.Wine;
-import com.gregortorrence.winedatabase.persistence.WineService;
+import com.gregortorrence.winedatabase.services.WineService;
 import static com.gregortorrence.winedatabase.resources.CommonResources.*;
 
 import lombok.extern.slf4j.Slf4j;

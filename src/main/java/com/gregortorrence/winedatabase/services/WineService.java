@@ -1,4 +1,4 @@
-package com.gregortorrence.winedatabase.persistence;
+package com.gregortorrence.winedatabase.services;
 
 import com.google.common.collect.ImmutableList;
 import com.gregortorrence.winedatabase.models.Wine;
@@ -12,7 +12,8 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
- * This application is a Sparkjava demo, not a persistence demo. So I'll use an impractical in-memory persistence model.
+ * This services provides "persistence" for Wine documents. This application is a Sparkjava demo, not a persistence
+ * demo. So I'll use an impractical in-memory services model.
  *
  * Created by Gregor Torrence on 6/9/17.
  */
